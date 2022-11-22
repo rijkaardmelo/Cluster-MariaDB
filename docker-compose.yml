@@ -1,0 +1,64 @@
+version: '3.9'
+
+services:
+
+  MariaDB-01:
+    image: bitnami/mariadb-galera
+    container_name: MariaDB-01
+    restart: unless-stopped
+    environment:
+      MARIADB_GALERA_CLUSTER_NAME: galera
+      MARIADB_GALERA_CLUSTER_ADDRESS: gcomm://10.200.4.250,10.200.4.100
+      MARIADB_GALERA_NODE_ADDRESS: 10.200.4.250
+      MARIADB_GALERA_MARIABACKUP_PASSWORD: backup
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_USER: galera
+      MARIADB_PASSWORD: galera
+      MARIADB_REPLICATION_USER: replica
+      MARIADB_REPLICATION_PASSWORD: replica
+      MARIADB_GALERA_CLUSTER_BOOTSTRAP: yes
+    volumes:
+      - ./libmariadbgalera.sh:/opt/bitnami/scripts/libmariadbgalera.sh
+      - Galera:/bitnami/mariadb
+    networks:
+      - MariaDB
+    ports:
+      - 3306:3306
+      - 4444:4444
+      - 4567:4567
+      - 4568:4568
+
+  MariaDB-02:
+    image: bitnami/mariadb-galera
+    container_name: MariaDB-02
+    restart: unless-stopped
+    environment:
+      MARIADB_GALERA_CLUSTER_NAME: galera
+      MARIADB_GALERA_CLUSTER_ADDRESS: gcomm://10.200.4.250,10.200.4.100
+      MARIADB_GALERA_NODE_ADDRESS: 10.200.4.100
+      MARIADB_GALERA_MARIABACKUP_PASSWORD: backup
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_USER: galera
+      MARIADB_PASSWORD: galera
+      MARIADB_REPLICATION_USER: replica
+      MARIADB_REPLICATION_PASSWORD: replica
+    volumes:
+      - ./libmariadbgalera.sh:/opt/bitnami/scripts/libmariadbgalera.sh
+      - Galera:/bitnami/mariadb
+    networks:
+      - MariaDB
+    ports:
+      - 3306:3306
+      - 4444:4444
+      - 4567:4567
+      - 4568:4568
+
+networks:
+  MariaDB:
+    name: MariaDB
+    driver: bridge
+
+volumes:
+  Galera:
+    name: Galera
+    driver: local
