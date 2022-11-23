@@ -63,7 +63,6 @@ mysql_extra_flags() {
             "--wsrep-cluster-address=$(get_galera_cluster_address_value)"
             "--wsrep-sst-method=${DB_GALERA_SST_METHOD}"
             "--wsrep-sst-auth=${DB_GALERA_MARIABACKUP_USER}:${DB_GALERA_MARIABACKUP_PASSWORD}"
-            "--wsrep-new-cluster=once"
         )
     fi
 
