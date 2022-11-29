@@ -1,0 +1,8 @@
+[Unit]
+Description=Recovery MariaDB.
+
+[Service]
+ExecStart=/bin/bash /etc/mysql/mariadb.conf.d/recovery.sh
+
+[Install]
+WantedBy=multi-user.target
