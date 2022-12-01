@@ -1,8 +1,12 @@
 [Unit]
 Description=Recovery MariaDB.
+After=network-online.target networking.service multi-user.target
+Before=mariadb.service
 
 [Service]
-ExecStart=/bin/bash /etc/mysql/mariadb.conf.d/recovery.sh
+Restart=on-failure
+ExecStart=/bin/python3 /etc/mysql/mariadb.conf.d/recovery.py
+ExecStrat=/usr/bin/systemctl start mariadb
 
 [Install]
 WantedBy=multi-user.target
