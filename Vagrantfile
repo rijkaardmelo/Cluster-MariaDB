@@ -3,10 +3,8 @@ Vagrant.configure("2") do |config|
     config.vm.box = "debian/bullseye64"
     
     config.vm.define "MariaDB-01" do |mariadb01|
-        # Configurando a rede
-        mariadb01.vm.network "public_network", ip: "10.200.4.250", netmask: "255.255.0.0"
+        mariadb01.vm.network "public_network", ip: "192.168.1.250", netmask: "255.255.255.0", bridge: "wlp0s20f3"
         mariadb01.vm.hostname = "MariaDB-01"
-        # Configurando a maquina virtual
         mariadb01.vm.provider "virtualbox" do |vb|
           vb.memory = 1024
           vb.cpus = 1
@@ -17,10 +15,8 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.define "MariaDB-02" do |mariadb02|
-        # Configurando a rede
-        mariadb02.vm.network "public_network", ip: "10.200.4.251", netmask: "255.255.0.0"
+        mariadb02.vm.network "public_network", ip: "192.168.1.251", netmask: "255.255.255.0", bridge: "wlp0s20f3"
         mariadb02.vm.hostname = "MariaDB-02"
-        # Configurando a maquina virtual
         mariadb02.vm.provider "virtualbox" do |vb|
           vb.memory = 1024
           vb.cpus = 1
@@ -31,10 +27,8 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.define "MariaDB-03" do |mariadb03|
-        # Configurando a rede
-        mariadb03.vm.network "public_network", ip: "10.200.4.252", netmask: "255.255.0.0"
+        mariadb03.vm.network "public_network", ip: "192.168.1.252", netmask: "255.255.255.0", bridge: "wlp0s20f3"
         mariadb03.vm.hostname = "MariaDB-03"
-        # Configurando a maquina virtual
         mariadb03.vm.provider "virtualbox" do |vb|
           vb.memory = 1024
           vb.cpus = 1

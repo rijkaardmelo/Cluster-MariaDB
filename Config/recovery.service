@@ -5,7 +5,7 @@ Before=mariadb.service
 
 [Service]
 Restart=on-failure
-ExecStart=/bin/python3 /etc/mysql/mariadb.conf.d/recovery.py
+ExecStartPre=/bin/python3 /etc/mysql/mariadb.conf.d/recovery.py
 ExecStrat=/usr/bin/systemctl start mariadb
 
 [Install]

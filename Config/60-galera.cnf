@@ -3,7 +3,7 @@
 wsrep_on                 = ON
 wsrep_provider           = /usr/lib/galera/libgalera_smm.so
 wsrep_cluster_name       = "MariaDB Galera Cluster"
-wsrep_cluster_address    = "gcomm://10.200.4.250,10.200.4.251"
+wsrep_cluster_address    = "gcomm://192.168.1.250,192.168.1.251"
 binlog_format            = row
 default_storage_engine   = InnoDB
 innodb_autoinc_lock_mode = 2
@@ -17,7 +17,7 @@ bind-address = 0.0.0.0
 wsrep_slave_threads            = 4
 innodb_flush_log_at_trx_commit = 0
 wsrep_node_name                = MariaDB-01
-wsrep_node_address             = 10.200.4.250
+wsrep_node_address             = 192.168.1.250
 
 # By default, MariaDB error logs are sent to journald, which can be hard to digest sometimes.
 # The following line will save error messages to a plain file. 

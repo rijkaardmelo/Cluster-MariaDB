@@ -26,4 +26,3 @@ if __name__ == "__main__" :
         os.system("galera_recovery")
         os.system("sed -i 's/safe_to_bootstrap: 0/safe_to_bootstrap: 1/' /var/lib/mysql/grastate.dat")
         os.system("galera_new_cluster")
-        os.system("service mariadb start")
