@@ -1,5 +1,4 @@
 Vagrant.configure("2") do |config|
-    # O sistema operacional que vai ser instalado nas maquinas virtuais
     config.vm.box = "debian/bullseye64"
     
     config.vm.define "MariaDB-01" do |mariadb01|
@@ -11,7 +10,8 @@ Vagrant.configure("2") do |config|
           vb.name = "MariaDB-01"
         end
         mariadb01.vm.provision "shell",
-            inline: "apt update && apt -y upgrade && apt -y dist-upgrade"
+            inline: "apt update && apt -y upgrade && apt -y dist-upgrade && 
+                      apt -y install mariadb-server mariadb-client galera-4 rsync python3 python3-pip && pip3 install PyMySQL"
     end
 
     config.vm.define "MariaDB-02" do |mariadb02|
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
           vb.name = "MariaDB-02"
         end
         mariadb02.vm.provision "shell",
-            inline: "apt update && apt -y upgrade && apt -y dist-upgrade"
+            inline: "apt update && apt -y upgrade && apt -y dist-upgrade && apt -y install mariadb-server galera-4 rsync"
     end
 
     config.vm.define "MariaDB-03" do |mariadb03|
@@ -35,6 +35,6 @@ Vagrant.configure("2") do |config|
           vb.name = "MariaDB-03"
         end
         mariadb03.vm.provision "shell",
-            inline: "apt update && apt -y upgrade && apt -y dist-upgrade"
+            inline: "apt update && apt -y upgrade && apt -y dist-upgrade && apt -y install mariadb-server galera-4 rsync"
     end
 end
