@@ -4,9 +4,7 @@ After=network-online.target networking.service multi-user.target
 Before=mariadb.service
 
 [Service]
-Restart=on-failure
 ExecStartPre=/bin/python3 /etc/mysql/mariadb.conf.d/recovery.py
-ExecStart=/usr/bin/systemctl start mariadb
 
 [Install]
 WantedBy=multi-user.target
